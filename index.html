@@ -1199,7 +1199,7 @@
       </div>
       <div class="hero-stat-sep"></div>
       <div class="hero-stat-inline">
-        <span class="hero-stat-inline-num">∞</span>
+        <span class="hero-stat-inline-num" style="font-family:'Montserrat',sans-serif;font-weight:800;">∞</span>
         <span class="hero-stat-inline-label">Контактов</span>
       </div>
     </div>
@@ -1556,13 +1556,18 @@
     <div class="modal-tag gold" id="modal-tag">Стандартное участие · 30 BYN</div>
     <div class="modal-title" id="modal-title">Оставить заявку</div>
     <div class="form-field">
-      <label>Имя</label>
+      <label>Имя <span style="color:var(--text-muted);font-weight:400;font-style:italic;">— необязательно</span></label>
       <input type="text" id="modal-name" placeholder="Как тебя зовут?">
     </div>
     <div class="form-field">
-      <label>Telegram или телефон</label>
-      <input type="text" id="modal-contact" placeholder="@username или +375...">
+      <label>Telegram <span style="color:#ff6060;font-size:13px;">*</span></label>
+      <input type="text" id="modal-telegram" placeholder="@username">
     </div>
+    <div class="form-field">
+      <label>Номер телефона <span style="color:#ff6060;font-size:13px;">*</span></label>
+      <input type="tel" id="modal-phone" placeholder="+375...">
+    </div>
+    <p style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">* Заполни хотя бы одно из двух полей</p>
     <button class="form-btn" id="modal-submit-btn" onclick="handleModalSubmit()">Подтвердить заявку →</button>
     <p class="form-note" id="modal-note">Мы напишем тебе и подтвердим место.<br>Адрес площадки — за несколько дней до события.</p>
   </div>
@@ -1691,7 +1696,8 @@
       note.innerHTML = 'Мы напишем тебе и подтвердим место.<br>Адрес площадки — за несколько дней до события.';
     }
     document.getElementById('modal-name').value = '';
-    document.getElementById('modal-contact').value = '';
+    document.getElementById('modal-telegram').value = '';
+    document.getElementById('modal-phone').value = '';
     btn.textContent = 'Подтвердить заявку →';
     btn.style.background = '';
     document.getElementById('modal').classList.add('active');
@@ -1710,18 +1716,26 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
   function handleModalSubmit() {
-    const name = document.getElementById('modal-name').value.trim();
-    const contact = document.getElementById('modal-contact').value.trim();
+    const telegram = document.getElementById('modal-telegram').value.trim();
+    const phone = document.getElementById('modal-phone').value.trim();
     const btn = document.getElementById('modal-submit-btn');
-    if (!name || !contact) {
+    const tgField = document.getElementById('modal-telegram');
+    const phoneField = document.getElementById('modal-phone');
+
+    if (!telegram && !phone) {
+      tgField.style.borderColor = '#ff6060';
+      phoneField.style.borderColor = '#ff6060';
       btn.style.background = '#ff6060';
-      btn.textContent = 'Заполни все поля!';
+      btn.textContent = 'Укажи Telegram или телефон!';
       setTimeout(() => {
         btn.style.background = '';
         btn.textContent = 'Подтвердить заявку →';
-      }, 2000);
+        tgField.style.borderColor = '';
+        phoneField.style.borderColor = '';
+      }, 2500);
       return;
     }
+
     btn.style.background = '#60d860';
     btn.textContent = '✓ Заявка принята!';
     setTimeout(() => closeModal(), 1800);
