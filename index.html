@@ -1512,12 +1512,16 @@
     <div class="modal-tag gold" id="modal-tag">Стандартное участие · 30 BYN</div>
     <div class="modal-title" id="modal-title">Оставить заявку</div>
     <div class="form-field">
-      <label>Имя</label>
+      <label>Имя <span style="font-weight:400;opacity:0.5;">(необязательно)</span></label>
       <input type="text" id="modal-name" placeholder="Как тебя зовут?">
     </div>
     <div class="form-field">
-      <label>Telegram или телефон</label>
-      <input type="text" id="modal-contact" placeholder="@username или +375...">
+      <label>Telegram</label>
+      <input type="text" id="modal-telegram" placeholder="@username">
+    </div>
+    <div class="form-field">
+      <label>Номер телефона</label>
+      <input type="text" id="modal-phone" placeholder="+375...">
     </div>
     <button class="form-btn" id="modal-submit-btn" onclick="handleModalSubmit()">Подтвердить заявку →</button>
     <p class="form-note" id="modal-note">Мы напишем тебе и подтвердим место.<br>Адрес площадки — за несколько дней до события.</p>
@@ -1651,19 +1655,41 @@
 
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
+  const TG_BOT_TOKEN = '8565048340:AAFPG8Qhx4N4PhrGdd-Zgh8T8_axDhbnYm0';
+  const TG_CHAT_ID = '-5056307056';
+
   function handleModalSubmit() {
     const name = document.getElementById('modal-name').value.trim();
-    const contact = document.getElementById('modal-contact').value.trim();
+    const telegram = document.getElementById('modal-telegram').value.trim();
+    const phone = document.getElementById('modal-phone').value.trim();
     const btn = document.getElementById('modal-submit-btn');
-    if (!name || !contact) {
+    const type = document.getElementById('modal-tag').textContent;
+
+    if (!telegram && !phone) {
       btn.style.background = '#ff6060';
-      btn.textContent = 'Заполни все поля!';
+      btn.textContent = 'Укажи Telegram или телефон!';
       setTimeout(() => {
         btn.style.background = '';
         btn.textContent = 'Подтвердить заявку →';
       }, 2000);
       return;
     }
+
+    const text = `🎟 Новая заявка — CryptoFam Live\n\n👤 Имя: ${name || '—'}\n💬 Telegram: ${telegram || '—'}\n📞 Телефон: ${phone || '—'}\n💳 Тип: ${type}`;
+
+    fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: TG_CHAT_ID, text })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (!data.ok) {
+        alert('Ошибка Telegram: ' + JSON.stringify(data));
+      }
+    })
+    .catch(err => alert('Ошибка запроса: ' + err));
+
     btn.style.background = '#60d860';
     btn.textContent = '✓ Заявка принята!';
     setTimeout(() => closeModal(), 1800);
