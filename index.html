@@ -1709,6 +1709,7 @@
   function handleModalSubmit() {
     const telegram = document.getElementById('modal-telegram').value.trim();
     const phone = document.getElementById('modal-phone').value.trim();
+    const name = document.getElementById('modal-name').value.trim();
     const btn = document.getElementById('modal-submit-btn');
     const tgField = document.getElementById('modal-telegram');
     const phoneField = document.getElementById('modal-phone');
@@ -1727,9 +1728,44 @@
       return;
     }
 
-    btn.style.background = '#60d860';
-    btn.textContent = '✓ Заявка принята!';
-    setTimeout(() => closeModal(), 1800);
+    btn.textContent = 'Отправляем...';
+    btn.disabled = true;
+
+    const ticketType = currentType === 'free' ? '🆓 Бесплатно (репост)' : '💳 30 BYN';
+    const message = `🔔 Новая заявка — CryptoFam Live\n\n` +
+      `👤 Имя: ${name || '—'}\n` +
+      `✈️ Telegram: ${telegram || '—'}\n` +
+      `📞 Телефон: ${phone || '—'}\n` +
+      `🎟 Билет: ${ticketType}`;
+
+    fetch(`https://api.telegram.org/bot8565048340:AAFPG8Qhx4N4PhrGdd-Zgh8T8_axDhbnYm0/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: '-5056307056',
+        text: message
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.ok) {
+        btn.style.background = '#60d860';
+        btn.textContent = '✓ Заявка принята!';
+        btn.disabled = false;
+        setTimeout(() => closeModal(), 1800);
+      } else {
+        throw new Error('Telegram error');
+      }
+    })
+    .catch(() => {
+      btn.style.background = '#ff6060';
+      btn.textContent = 'Ошибка, попробуй ещё раз';
+      btn.disabled = false;
+      setTimeout(() => {
+        btn.style.background = '';
+        btn.textContent = 'Подтвердить заявку →';
+      }, 3000);
+    });
   }
 </script>
 
