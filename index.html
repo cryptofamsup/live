@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CryptoFam Live — 19 апреля, Минск</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #F0C040;
+    --gold-dim: #c9a020;
+    --dark: #0A0A0F;
+    --dark2: #111118;
+    --dark3: #18181f;
+    --dark4: #1e1e28;
+    --border: rgba(240,192,64,0.18);
+    --text: #e8e8f0;
+    --text-muted: #7a7a9a;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* HEADER / NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 900;
+    background: rgba(10,10,15,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--white); }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--dark);
+    padding: 9px 22px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: #ffd060; transform: translateY(-1px); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 64px;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(240,192,64,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 10% 80%, rgba(240,192,64,0.04) 0%, transparent 60%),
+      linear-gradient(180deg, #0a0a0f 0%, #0f0f18 100%);
+  }
+  .hero-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(240,192,64,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(240,192,64,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 32px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(240,192,64,0.1);
+    border: 1px solid var(--border);
+    padding: 6px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 16px;
+    margin-bottom: 32px;
+    align-self: center;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 3.2vw, 52px);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 12px;
+    max-width: 700px;
+  }
+  .hero-title .gold { color: var(--gold); }
+  .hero-subtitle-line {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    max-width: 500px;
+    line-height: 1.7;
+    text-align: center;
+  }
+  .hero-subtitle-line strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .hero-stats-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 48px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .hero-stat-inline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 48px;
+    gap: 4px;
+  }
+  .hero-stat-inline-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: 0.03em;
+  }
+  .hero-stat-inline-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .hero-stat-sep {
+    width: 1px;
+    height: 56px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--dark);
+    padding: 16px 36px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+  .btn-primary:hover {
+    background: #ffd060;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(240,192,64,0.3);
+  }
+  .btn-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+    text-align: center;
+    margin-top: 12px;
+  }
+  .hero-floats {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 2;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    padding: 20px 28px;
+    text-align: center;
+    min-width: 140px;
+  }
+  .hero-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* SECTION STYLES */
+  section { position: relative; }
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 32px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 80px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 62px);
+    letter-spacing: 0.02em;
+    color: var(--white);
+    line-height: 1.0;
+    margin-bottom: 20px;
+  }
+  .section-title .gold { color: var(--gold); }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border) 30%, var(--border) 70%, transparent);
+  }
+
+  /* PAIN */
+  #pain { background: var(--dark2); }
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 56px;
+    border: 1px solid var(--border);
+  }
+  .pain-card {
+    background: var(--dark2);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .pain-card:hover { background: var(--dark3); }
+  .pain-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .pain-card:hover::before { opacity: 1; }
+  .pain-emoji { font-size: 36px; margin-bottom: 16px; display: block; }
+  .pain-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .pain-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+  .pain-close {
+    margin-top: 56px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    padding: 28px 40px;
+    border: 1px solid var(--border);
+    background: rgba(240,192,64,0.05);
+    position: relative;
+  }
+  .pain-close .gold { color: var(--gold); }
+
+  /* FOR WHO */
+  #forwhom {
+    background: var(--dark);
+  }
+  .forwhom-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+  .forwhom-card {
+    border: 1px solid var(--border);
+    padding: 36px 28px;
+    position: relative;
+    background: linear-gradient(135deg, var(--dark3) 0%, var(--dark) 100%);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .forwhom-card:hover {
+    border-color: rgba(240,192,64,0.5);
+    transform: translateY(-4px);
+  }
+  .forwhom-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 1;
+    color: rgba(240,192,64,0.1);
+    position: absolute;
+    top: 16px; right: 24px;
+  }
+  .forwhom-icon { font-size: 32px; margin-bottom: 20px; display: block; }
+  .forwhom-card h3 {
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: 0.03em;
+  }
+  .forwhom-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  /* WHAT YOU GET */
+  #benefits { background: var(--dark2); }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: var(--border);
+    margin-top: 56px;
+    border: 1px solid var(--border);
+  }
+  .benefit-item {
+    background: var(--dark2);
+    padding: 36px 32px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: background 0.3s;
+  }
+  .benefit-item:hover { background: var(--dark3); }
+  .benefit-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    width: 52px; height: 52px;
+    background: rgba(240,192,64,0.08);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .benefit-text h4 {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--white);
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+  .benefit-text p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+  /* SPEAKERS */
+  #speakers { background: var(--dark); }
+  .speakers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+  .speaker-card {
+    border: 1px solid var(--border);
+    overflow: hidden;
+    background: var(--dark3);
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+  }
+  .speaker-card:hover {
+    border-color: rgba(240,192,64,0.4);
+    transform: translateY(-4px);
+  }
+  .speaker-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--dark4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .speaker-photo-placeholder {
+    font-size: 80px;
+    opacity: 0.15;
+  }
+  .speaker-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, var(--dark3) 0%, transparent 50%);
+  }
+  .speaker-body { padding: 24px; }
+  .speaker-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .speaker-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .speaker-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .speaker-topic {
+    background: rgba(240,192,64,0.07);
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+  }
+  .speaker-topic-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .speaker-topic p { font-size: 13px; color: var(--text); line-height: 1.5; font-weight: 500; }
+
+  /* PROGRAM */
+  #program { background: var(--dark2); }
+  .program-list {
+    margin-top: 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .program-item {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .program-item:last-child { border-bottom: none; }
+  .program-item:hover { background: rgba(240,192,64,0.03); }
+  .program-time {
+    width: 120px;
+    flex-shrink: 0;
+    padding: 24px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .program-time-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+  .program-content {
+    padding: 24px 32px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .program-title {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .program-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    line-height: 1.6;
+  }
+  .program-speaker-name {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+  .program-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: 1px solid;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge-talk { border-color: var(--gold); color: var(--gold); }
+  .badge-network { border-color: #4a9aff; color: #4a9aff; }
+  .badge-open { border-color: #60d860; color: #60d860; }
+
+  /* PARTNER */
+  #partner { background: var(--dark); }
+  .partner-block {
+    margin-top: 56px;
+    border: 1px solid var(--border);
+    padding: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(240,192,64,0.04) 0%, transparent 60%);
+    position: relative;
+    overflow: hidden;
+  }
+  .partner-block::before {
+    content: 'WEEX';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 200px;
+    color: rgba(240,192,64,0.03);
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    pointer-events: none;
+  }
+  .partner-logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    padding: 40px;
+    background: rgba(255,255,255,0.02);
+  }
+  .partner-logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+  }
+  .partner-text h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--white);
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+  }
+  .partner-text p { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 12px; }
+  .partner-highlight {
+    background: rgba(240,192,64,0.08);
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+    font-size: 14px;
+    color: var(--text);
+    margin-top: 20px;
+  }
+
+  /* GALLERY */
+  #gallery { background: var(--dark2); }
+  .gallery-note {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 16px;
+    font-style: italic;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    margin-top: 48px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .gallery-item {
+    aspect-ratio: 4/3;
+    background: var(--dark4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .gallery-item:hover { opacity: 0.8; }
+  .gallery-placeholder {
+    font-size: 48px;
+    opacity: 0.07;
+  }
+  .gallery-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 12px 16px;
+    background: linear-gradient(0deg, rgba(10,10,15,0.9) 0%, transparent 100%);
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .gallery-hint {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* REGISTRATION */
+  #registration {
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+  #registration::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(240,192,64,0.06) 0%, transparent 70%);
+  }
+  .counter-block {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .counter-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 96px;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .counter-label {
+    font-size: 14px;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+  .counter-bar-outer {
+    max-width: 400px;
+    margin: 20px auto 0;
+    height: 4px;
+    background: rgba(255,255,255,0.06);
+  }
+  .counter-bar-inner {
+    height: 100%;
+    background: var(--gold);
+    width: 70%;
+    transition: width 1s ease;
+  }
+  .reg-intro {
+    max-width: 600px;
+    margin: 0 auto 56px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  .reg-intro h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: 0.03em;
+  }
+  .reg-intro p { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+
+  .tickets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .ticket-card {
+    border: 1px solid var(--border);
+    background: var(--dark3);
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .ticket-card:hover { transform: translateY(-4px); }
+  .ticket-card.featured {
+    border-color: rgba(240,192,64,0.5);
+    background: linear-gradient(135deg, rgba(240,192,64,0.07) 0%, var(--dark3) 60%);
+  }
+  .ticket-card.featured::before {
+    content: 'ПОПУЛЯРНЫЙ';
+    position: absolute;
+    top: 16px; right: -28px;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    padding: 4px 36px;
+    transform: rotate(45deg);
+    transform-origin: center;
+  }
+  .ticket-type {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .ticket-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 4px;
+  }
+  .ticket-price.gold { color: var(--gold); }
+  .ticket-price.green { color: #60d860; }
+  .ticket-currency {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 24px;
+  }
+  .ticket-divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 24px;
+  }
+  .ticket-includes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+    flex: 1;
+  }
+  .ticket-includes li {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+  .ticket-includes li::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .ticket-card.free-card .ticket-includes li::before { color: #60d860; }
+  .ticket-btn {
+    width: 100%;
+    padding: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .ticket-btn.gold-btn {
+    background: var(--gold);
+    color: var(--dark);
+  }
+  .ticket-btn.gold-btn:hover { background: #ffd060; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(240,192,64,0.3); }
+  .ticket-btn.green-btn {
+    background: transparent;
+    color: #60d860;
+    border: 1px solid #60d860;
+    clip-path: none;
+  }
+  .ticket-btn.green-btn:hover { background: rgba(96,216,96,0.08); transform: translateY(-2px); }
+  .reg-note {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.82);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
+  .modal-box {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    padding: 44px 40px;
+    width: 100%;
+    max-width: 460px;
+    position: relative;
+    transform: translateY(24px);
+    transition: transform 0.3s;
+  }
+  .modal-overlay.active .modal-box { transform: translateY(0); }
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 20px;
+    font-size: 22px;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1;
+    background: none; border: none;
+    transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--white); }
+  .modal-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .modal-tag.gold { color: var(--gold); }
+  .modal-tag.green { color: #60d860; }
+  .modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+  .form-field {
+    margin-bottom: 16px;
+  }
+  .form-field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .form-field input {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 13px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-field input:focus { border-color: var(--gold); }
+  .form-field input::placeholder { color: var(--text-muted); }
+  .form-btn {
+    width: 100%;
+    margin-top: 8px;
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    padding: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .form-btn:hover { background: #ffd060; transform: translateY(-1px); }
+  .form-btn.green-submit { background: #60d860; }
+  .form-btn.green-submit:hover { background: #7aee7a; }
+  .form-note {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+
+  /* FAQ */
+  #faq { background: var(--dark2); }
+  .faq-list {
+    margin-top: 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    padding: 22px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transition: background 0.2s;
+    user-select: none;
+  }
+  .faq-q:hover { background: rgba(240,192,64,0.04); }
+  .faq-arrow {
+    font-size: 18px;
+    color: var(--gold);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .faq-item.open .faq-arrow { transform: rotate(45deg); }
+  .faq-a {
+    padding: 0 28px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+  }
+  .faq-item.open .faq-a {
+    max-height: 200px;
+    padding: 0 28px 22px;
+  }
+  .faq-a p { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+
+  /* FINAL CTA */
+  #finalcta {
+    background: var(--dark);
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+  #finalcta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(240,192,64,0.08) 0%, transparent 60%);
+  }
+  .finalcta-inner { position: relative; z-index: 2; }
+  .finalcta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 88px);
+    color: var(--white);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin-bottom: 24px;
+  }
+  .finalcta-title .gold { color: var(--gold); }
+  .finalcta-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 540px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+  }
+  .finalcta-sub strong { color: var(--text); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark2);
+    border-top: 1px solid var(--border);
+    padding: 32px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  footer p {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* SCROLL ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .nav-links, .nav-cta { display: none; }
+    .hero-floats { display: none; }
+    .pain-grid, .forwhom-cards, .speakers-grid, .benefits-grid,
+    .reg-layout, .partner-block { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .program-content { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+  @media (max-width: 600px) {
+    .section-inner { padding: 60px 20px; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .partner-block { padding: 28px 20px; }
+    .reg-form { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">CryptoFam <span>Live</span></a>
+    <ul class="nav-links">
+      <li><a href="#speakers">Спикеры</a></li>
+      <li><a href="#program">Программа</a></li>
+      <li><a href="#partner">Партнёр</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#registration" class="nav-cta" onclick="event.preventDefault();openModal('paid')">Оставить заявку</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <h1 class="hero-title">
+      За 1 встречу разберёшься<br>как работать с <span class="gold">криптой</span> —<br>легально, системно<br>и без слива
+    </h1>
+    <div class="hero-badge">19 апреля 2025 · Минск · Офлайн</div>
+    <p class="hero-subtitle-line">
+      <strong>3 практикующих спикера.</strong> Живые выступления.<br>
+      Фуршет и нетворкинг. Без воды — только практика.
+    </p>
+    <div class="hero-stats-row">
+      <div class="hero-stat-inline">
+        <span class="hero-stat-inline-num">3</span>
+        <span class="hero-stat-inline-label">Спикера</span>
+      </div>
+      <div class="hero-stat-sep"></div>
+      <div class="hero-stat-inline">
+        <span class="hero-stat-inline-num">1</span>
+        <span class="hero-stat-inline-label">Встреча</span>
+      </div>
+      <div class="hero-stat-sep"></div>
+      <div class="hero-stat-inline">
+        <span class="hero-stat-inline-num">∞</span>
+        <span class="hero-stat-inline-label">Контактов</span>
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="#registration" class="btn-primary" onclick="event.preventDefault();openModal('paid')">Оставить заявку на участие</a>
+    </div>
+    <p class="btn-note">Места ограничены — идёт отбор. Вход бесплатно за репост анонса.</p>
+  </div>
+
+
+</section>
+
+<div class="divider"></div>
+
+<!-- FOR WHOM / PAIN -->
+<section id="forwhom">
+  <div class="section-inner">
+    <div class="section-label fade-up">Для кого</div>
+    <h2 class="section-title fade-up">Тебе сюда, если <span class="gold">узнаёшь себя:</span></h2>
+    <div class="forwhom-cards">
+      <div class="forwhom-card fade-up">
+        <span class="forwhom-num">01</span>
+        <span class="forwhom-icon">👋</span>
+        <h3>Хочешь войти в крипту, но не знаешь с чего начать</h3>
+        <p>Куча информации, непонятно кому доверять и что реально работает.</p>
+      </div>
+      <div class="forwhom-card fade-up">
+        <span class="forwhom-num">02</span>
+        <span class="forwhom-icon">📈</span>
+        <h3>Торгуешь, но результата нет</h3>
+        <p>Сделки есть, прибыли нет — и уже непонятно что идёт не так.</p>
+      </div>
+      <div class="forwhom-card fade-up">
+        <span class="forwhom-num">03</span>
+        <span class="forwhom-icon">💼</span>
+        <h3>Зарабатываешь на крипте, но боишься налогов</h3>
+        <p>Деньги есть, а как работать легально в Беларуси — непонятно.</p>
+      </div>
+    </div>
+    <div class="pain-close fade-up">
+      На <span class="gold">CryptoFam Live</span> мы закрываем все три вопроса. За одну встречу.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BENEFITS -->
+<section id="benefits">
+  <div class="section-inner">
+    <div class="section-label fade-up">Что ты унесёшь</div>
+    <h2 class="section-title fade-up">Вот что ты получишь<br>после <span class="gold">19 апреля</span></h2>
+    <div class="benefits-grid fade-up">
+      <div class="benefit-item">
+        <div class="benefit-icon">📊</div>
+        <div class="benefit-text">
+          <h4>Живой разбор рынка от практика</h4>
+          <p>Не теорию, а реальную картину от практикующего трейдера.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">💰</div>
+        <div class="benefit-text">
+          <h4>Новые способы заработка</h4>
+          <p>Узнаешь самые актуальные направления на 2026 год – от активной торговли до пассивного дохода</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">⚖️</div>
+        <div class="benefit-text">
+          <h4>Легальность в Беларуси — без страхов</h4>
+          <p>Какие налоги платить, что грозит за ошибки и как не отдавать лишнее государству.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🤖</div>
+        <div class="benefit-text">
+          <h4>Получишь торговых ботов с открытой прибыльной статистикой за последние 5 лет</h4>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🤖</div>
+        <div class="benefit-text">
+          <h4>Эксклюзивный бонус от WEEX</h4>
+          <p>Биржа с торговыми ботами и открытой статистикой доходности — специальное предложение для участников.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🤝</div>
+        <div class="benefit-text">
+          <h4>Живые знакомства в крипто-сообществе</h4>
+          <p>Люди, которые реально в теме. Фуршет и нетворкинг — именно здесь находят партнёров и инсайды.</p>
+        </div>
+      </div>
+      <div class="benefit-item" style="background: rgba(240,192,64,0.04); border-left: 2px solid var(--gold);">
+        <div class="benefit-icon" style="background: rgba(240,192,64,0.15);">🎁</div>
+        <div class="benefit-text">
+          <h4>Розыгрыш мерча прямо на встрече</h4>
+          <p>Фирменный мерч от WEEX подарим на мероприятии.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SPEAKERS -->
+<section id="speakers">
+  <div class="section-inner">
+    <div class="section-label fade-up">Спикеры</div>
+    <h2 class="section-title fade-up">Кто будет <span class="gold">говорить</span></h2>
+    <div class="speakers-grid">
+
+      <div class="speaker-card fade-up">
+        <div class="speaker-photo">
+          <img src="Роман_Мартыненко.png" alt="Роман Мартыненко" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;">
+          <div class="speaker-photo-overlay"></div>
+        </div>
+        <div class="speaker-body">
+          <div class="speaker-tag">актуальные способы заработка в крипте</div>
+          <div class="speaker-name">Роман Мартыненко</div>
+          <p class="speaker-desc">Инвестор и практикующий трейдер. Автор блога KRIPTOROMM — о трейдинге честно, с реальными сделками и открытой статистикой.</p>
+        </div>
+      </div>
+
+      <div class="speaker-card fade-up">
+        <div class="speaker-photo">
+          <img src="Денис_Грицкевич.png" alt="Денис Грицкевич" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
+          <div class="speaker-photo-overlay"></div>
+        </div>
+        <div class="speaker-body">
+          <div class="speaker-tag">Дропхант · ICO · Предпринимательство</div>
+          <div class="speaker-name">Денис Грицкевич</div>
+          <p class="speaker-desc">Дропхантер, ICO-инвестор, предприниматель. Автор крупнейшего крипто-сообщества Беларуси. Зарабатывает на крипте — но не трейдингом.</p>
+        </div>
+      </div>
+
+      <div class="speaker-card fade-up">
+        <div class="speaker-photo">
+          <img src="Света_Малинина.png" alt="Света Малинина" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+          <div class="speaker-photo-overlay"></div>
+        </div>
+        <div class="speaker-body">
+          <div class="speaker-tag">Налоги · Легальность · Финансы</div>
+          <div class="speaker-name">Света Малинина</div>
+          <p class="speaker-desc">Финансовый директор. Автор блога про налоги. Помогает людям работать с деньгами легально и без лишних потерь.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROGRAM -->
+<section id="program">
+  <div class="section-inner">
+    <div class="section-label fade-up">Расписание</div>
+    <h2 class="section-title fade-up">Как пройдёт <span class="gold">встреча</span></h2>
+    <div class="program-list fade-up">
+      <div class="program-item">
+        <div class="program-time"><div class="program-time-val">12:40</div></div>
+        <div class="program-content">
+          <div>
+            <div class="program-title">Вход и регистрация</div>
+            <div class="program-speaker-name">Приходи заранее</div>
+          </div>
+          <div class="program-badge badge-open">Открытие</div>
+        </div>
+      </div>
+      <div class="program-item">
+        <div class="program-time"><div class="program-time-val">13:00</div></div>
+        <div class="program-content">
+          <div>
+            <div class="program-title">«Легальная работа и налогообложение в крипте»</div>
+            <div class="program-speaker-name">Света Малинина</div>
+            <div class="program-desc">Как фиксировать доходы, что грозит за ошибки и как не отдавать лишнее.</div>
+          </div>
+          <div class="program-badge badge-talk">Выступление</div>
+        </div>
+      </div>
+      <div class="program-item">
+        <div class="program-time"><div class="program-time-val">14:00</div></div>
+        <div class="program-content">
+          <div>
+            <div class="program-title">«Как заработать в крипте не торгуя»</div>
+            <div class="program-speaker-name">Денис Грицкевич</div>
+            <div class="program-desc">Конкретные стратегии без графиков и стресса: дропхант, ICO и другие рабочие схемы.</div>
+          </div>
+          <div class="program-badge badge-talk">Выступление</div>
+        </div>
+      </div>
+      <div class="program-item">
+        <div class="program-time"><div class="program-time-val">14:45</div></div>
+        <div class="program-content">
+          <div>
+            <div class="program-title">«Крипта 2026: где деньги и как их взять»</div>
+            <div class="program-speaker-name">Роман Мартыненко</div>
+            <div class="program-desc">Рыночная картина, рабочие инструменты, почему большинство теряет деньги и как этого избежать.</div>
+          </div>
+          <div class="program-badge badge-talk">Выступление</div>
+        </div>
+      </div>
+      <div class="program-item">
+        <div class="program-time"><div class="program-time-val">15:30</div></div>
+        <div class="program-content">
+          <div>
+            <div class="program-title">Фуршет, нетворкинг, живое общение</div>
+            <div class="program-speaker-name">Самое важное часто происходит здесь</div>
+          </div>
+          <div class="program-badge badge-network">Нетворкинг</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PARTNER WEEX -->
+<section id="partner">
+  <div class="section-inner">
+    <div class="section-label fade-up">Партнёр встречи</div>
+    <h2 class="section-title fade-up">Биржа <span class="gold">WEEX</span></h2>
+    <div class="partner-block fade-up">
+      <div class="partner-logo-box">
+        <div class="partner-logo-text">WEEX</div>
+      </div>
+      <div class="partner-text">
+        <h3>Не обещания — цифры</h3>
+        <p>WEEX — это не просто биржа. Единственная площадка с торговыми ботами и открытой статистикой доходности за несколько лет работы.</p>
+        <p>Хочешь знать реальную эффективность — смотришь цифры, не маркетинг.</p>
+        <div class="partner-highlight">
+          🎁 Специально для участников CryptoFam Live WEEX подготовил бонусы с раздачей USDT и фирменного мерча
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="section-label fade-up">Атмосфера</div>
+    <h2 class="section-title fade-up">Как это <span class="gold">было</span></h2>
+    <div class="gallery-grid fade-up">
+      <div class="gallery-item">
+        <img src="спикер_с_залом.jpg" alt="Спикер с залом" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="gallery-item">
+        <img src="зал.jpg" alt="Зал" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="gallery-item">
+        <img src="спикер_2.png" alt="Спикер" style="width:100%;height:100%;object-fit:cover;display:block;object-position:center 40%;">
+      </div>
+      <div class="gallery-item">
+        <img src="нетворкинг.jpg" alt="Нетворкинг" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="gallery-item">
+        <img src="нетворкинг2.jpg" alt="Нетворкинг" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="gallery-item">
+        <img src="просто_фото.jpg" alt="Участники" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REGISTRATION -->
+<section id="registration">
+  <div class="section-inner">
+    <div class="counter-block fade-up">
+      <div class="counter-num" id="seats-num">12</div>
+      <div class="counter-label">мест осталось из 50</div>
+      <div class="counter-bar-outer">
+        <div class="counter-bar-inner" id="counter-bar"></div>
+      </div>
+    </div>
+
+    <div class="reg-intro fade-up">
+      <div class="section-label" style="justify-content:center">Участие</div>
+      <h3>Почему заявка,<br>а не просто билет?</h3>
+      <p>Мы сознательно ограничиваем количество мест. Не ради искусственного ажиотажа — а чтобы каждый участник получил от встречи максимум: и от выступлений, и от живого общения.</p>
+    </div>
+
+    <div class="tickets-grid fade-up">
+
+      <!-- Платный билет -->
+      <div class="ticket-card">
+        <div class="ticket-type">Стандартное участие</div>
+        <div class="ticket-price gold">30 BYN</div>
+        <div class="ticket-divider"></div>
+        <ul class="ticket-includes">
+          <li>Три живых выступления от практиков</li>
+          <li>Фуршет и нетворкинг после выступлений</li>
+          <li>Эксклюзивный бонус от WEEX</li>
+          <li>Участие в розыгрыше мерча</li>
+          <li>Адрес площадки за несколько дней до события</li>
+        </ul>
+        <button class="ticket-btn gold-btn" onclick="openModal('paid')">Оставить заявку →</button>
+      </div>
+
+      <!-- Бесплатный билет -->
+      <div class="ticket-card free-card">
+        <div class="ticket-type">Вход за репост</div>
+        <div style="display:flex;align-items:baseline;gap:16px;">
+          <div class="ticket-price" style="color:var(--text-muted);text-decoration:line-through;opacity:0.5;">30 BYN</div>
+          <div class="ticket-price green">0 BYN</div>
+        </div>
+        <div class="ticket-currency">Бесплатно · за репост анонса</div>
+        <div class="ticket-divider"></div>
+        <ul class="ticket-includes">
+          <li>Сделай репост анонса в Telegram или Instagram</li>
+          <li>Все три выступления — как у платного билета</li>
+          <li>Фуршет и нетворкинг</li>
+          <li>Бонус от WEEX и розыгрыш мерча</li>
+          <li>Мы проверим репост и подтвердим место</li>
+        </ul>
+        <button class="ticket-btn green-btn" onclick="openModal('free')">Оставить заявку →</button>
+      </div>
+
+    </div>
+
+    <p class="reg-note fade-up">
+      Оставляй заявку — мы напишем и подтвердим твоё место.<br>
+      Адрес площадки отправим всем участникам за несколько дней до события.
+    </p>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-tag gold" id="modal-tag">Стандартное участие · 30 BYN</div>
+    <div class="modal-title" id="modal-title">Оставить заявку</div>
+    <div class="form-field">
+      <label>Имя</label>
+      <input type="text" id="modal-name" placeholder="Как тебя зовут?">
+    </div>
+    <div class="form-field">
+      <label>Telegram или телефон</label>
+      <input type="text" id="modal-contact" placeholder="@username или +375...">
+    </div>
+    <button class="form-btn" id="modal-submit-btn" onclick="handleModalSubmit()">Подтвердить заявку →</button>
+    <p class="form-note" id="modal-note">Мы напишем тебе и подтвердим место.<br>Адрес площадки — за несколько дней до события.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label fade-up">Вопросы</div>
+    <h2 class="section-title fade-up">Частые <span class="gold">вопросы</span></h2>
+    <div class="faq-list fade-up">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Нужен ли опыт в крипте?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a"><p>Нет. Мероприятие подходит и для новичков, и для тех кто уже в теме. Каждый найдёт что-то своё — программа выстроена так, чтобы быть полезной на любом уровне.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Что входит в участие?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a"><p>Три живых выступления, фуршет, нетворкинг и бонус от WEEX. Всё это за одну встречу.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Будет ли запись?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a"><p>Пока не планируем. Это живая встреча — атмосферу онлайн не передать. Именно поэтому важно быть лично.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Как получить бесплатный вход?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a"><p>Сделай репост анонса в своём Telegram или Instagram и напиши нам — подтвердим участие. Это реально работает.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FINAL CTA -->
+<section id="finalcta">
+  <div class="section-inner finalcta-inner">
+    <h2 class="finalcta-title fade-up">
+      Крипта не ждёт.<br>И <span class="gold">места</span> тоже.
+    </h2>
+    <p class="finalcta-sub fade-up">
+      19 апреля в Минске соберутся люди, которые хотят не просто «быть в крипте» — а <strong>реально зарабатывать</strong>. Будь среди них.
+    </p>
+    <a href="#registration" class="btn-primary fade-up" onclick="event.preventDefault();openModal('paid')">Хочу попасть на CryptoFam Live</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">CryptoFam Live</div>
+  <p>19 апреля · Минск · 13:00</p>
+  <p style="margin-top:8px">© 2025 CryptoFam</p>
+</footer>
+
+<script>
+  // FAQ accordion
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Scroll animations
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Counter bar
+  const totalSeats = 50;
+  const remainingSeats = 12;
+  const takenPct = ((totalSeats - remainingSeats) / totalSeats * 100);
+  document.getElementById('counter-bar').style.width = takenPct + '%';
+
+  // Modal logic
+  let currentType = 'paid';
+
+  function openModal(type) {
+    currentType = type;
+    const tag = document.getElementById('modal-tag');
+    const btn = document.getElementById('modal-submit-btn');
+    const note = document.getElementById('modal-note');
+    if (type === 'free') {
+      tag.textContent = 'Вход за репост · Бесплатно';
+      tag.className = 'modal-tag green';
+      btn.className = 'form-btn green-submit';
+      note.innerHTML = 'Мы проверим репост и подтвердим твоё место.<br>Не забудь сделать репост анонса до встречи.';
+    } else {
+      tag.textContent = 'Стандартное участие · 30 BYN';
+      tag.className = 'modal-tag gold';
+      btn.className = 'form-btn';
+      note.innerHTML = 'Мы напишем тебе и подтвердим место.<br>Адрес площадки — за несколько дней до события.';
+    }
+    document.getElementById('modal-name').value = '';
+    document.getElementById('modal-contact').value = '';
+    btn.textContent = 'Подтвердить заявку →';
+    btn.style.background = '';
+    document.getElementById('modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('modal')) closeModal();
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  function handleModalSubmit() {
+    const name = document.getElementById('modal-name').value.trim();
+    const contact = document.getElementById('modal-contact').value.trim();
+    const btn = document.getElementById('modal-submit-btn');
+    if (!name || !contact) {
+      btn.style.background = '#ff6060';
+      btn.textContent = 'Заполни все поля!';
+      setTimeout(() => {
+        btn.style.background = '';
+        btn.textContent = 'Подтвердить заявку →';
+      }, 2000);
+      return;
+    }
+    btn.style.background = '#60d860';
+    btn.textContent = '✓ Заявка принята!';
+    setTimeout(() => closeModal(), 1800);
+  }
+</script>
+
+</body>
+</html>
