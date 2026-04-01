@@ -584,6 +584,13 @@
     color: var(--text-muted);
     letter-spacing: 0.05em;
   }
+  .program-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    line-height: 1.5;
+    opacity: 0.8;
+  }
   .program-badge {
     font-size: 10px;
     font-weight: 700;
@@ -789,19 +796,6 @@
   .ticket-card.featured {
     border-color: rgba(240,192,64,0.5);
     background: linear-gradient(135deg, rgba(240,192,64,0.07) 0%, var(--dark3) 60%);
-  }
-  .ticket-card.featured::before {
-    content: 'ПОПУЛЯРНЫЙ';
-    position: absolute;
-    top: 16px; right: -28px;
-    background: var(--gold);
-    color: var(--dark);
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 0.15em;
-    padding: 4px 36px;
-    transform: rotate(45deg);
-    transform-origin: center;
   }
   .ticket-type {
     font-size: 10px;
@@ -1182,9 +1176,9 @@
     <h1 class="hero-title">
       За 1 встречу разберёшься<br>как работать с <span class="gold">криптой</span> —<br>легально, системно<br>и без слива
     </h1>
-    <div class="hero-badge">19 апреля 2025 · Минск · Офлайн</div>
+    <div class="hero-badge">19 апреля 2025 · Минск · Horizont Balance Zal</div>
     <p class="hero-subtitle-line">
-      <strong>3 практикующих спикера.</strong> Живые доклады.<br>
+      <strong>3 практикующих спикера.</strong> Живые выступления.<br>
       Фуршет и нетворкинг. Без воды — только практика.
     </p>
     <div class="hero-stats-row">
@@ -1320,13 +1314,9 @@
           <div class="speaker-photo-overlay"></div>
         </div>
         <div class="speaker-body">
-          <div class="speaker-tag">Трейдинг · KRIPTOROMM</div>
+          <div class="speaker-tag">Актуальные способы заработка в крипте</div>
           <div class="speaker-name">Роман Мартыненко</div>
-          <p class="speaker-desc">Инвестор и практикующий трейдер. Автор телеграм-канала и YouTube KRIPTOROMM — о трейдинге честно, с реальными сделками и открытой статистикой.</p>
-          <div class="speaker-topic">
-            <div class="speaker-topic-label">Тема доклада</div>
-            <p>«Крипта 2025–2026: где деньги и как их взять» — рыночная картина, рабочие инструменты и почему большинство теряет деньги.</p>
-          </div>
+          <p class="speaker-desc">Инвестор и практикующий трейдер. Автор блога KRIPTOROMM — о трейдинге честно, с реальными сделками и открытой статистикой.</p>
         </div>
       </div>
 
@@ -1339,10 +1329,6 @@
           <div class="speaker-tag">Дропхант · ICO · Предпринимательство</div>
           <div class="speaker-name">Денис Грицкевич</div>
           <p class="speaker-desc">Дропхантер, ICO-инвестор, предприниматель. Автор крупнейшего крипто-сообщества Беларуси. Зарабатывает на крипте — но не трейдингом.</p>
-          <div class="speaker-topic">
-            <div class="speaker-topic-label">Тема доклада</div>
-            <p>«Как заработать в крипте не торгуя» — конкретные стратегии без графиков и стресса: дропхант, ICO и другие рабочие схемы.</p>
-          </div>
         </div>
       </div>
 
@@ -1353,12 +1339,8 @@
         </div>
         <div class="speaker-body">
           <div class="speaker-tag">Налоги · Легальность · Финансы</div>
-          <div class="speaker-name">Светлана Малинина</div>
+          <div class="speaker-name">Света Малинина</div>
           <p class="speaker-desc">Финансовый директор. Автор блога про налоги. Помогает людям работать с деньгами легально и без лишних потерь.</p>
-          <div class="speaker-topic">
-            <div class="speaker-topic-label">Тема доклада</div>
-            <p>«Легальная работа и налогообложение в крипте» — как фиксировать доходы, что грозит за ошибки и как не отдавать лишнее.</p>
-          </div>
         </div>
       </div>
 
@@ -1374,6 +1356,7 @@
     <div class="section-label fade-up">Расписание</div>
     <h2 class="section-title fade-up">Как пройдёт <span class="gold">встреча</span></h2>
     <div class="program-list fade-up">
+
       <div class="program-item">
         <div class="program-time"><div class="program-time-val">12:40</div></div>
         <div class="program-content">
@@ -1384,36 +1367,43 @@
           <div class="program-badge badge-open">Открытие</div>
         </div>
       </div>
+
       <div class="program-item">
         <div class="program-time"><div class="program-time-val">13:00</div></div>
         <div class="program-content">
           <div>
-            <div class="program-title">«Крипта 2025–2026: где деньги и как их взять»</div>
-            <div class="program-speaker-name">Роман Мартыненко</div>
+            <div class="program-title">«Легальная работа и налогообложение в крипте»</div>
+            <div class="program-speaker-name">Света Малинина</div>
+            <div class="program-desc">Как фиксировать доходы, что грозит за ошибки и как не отдавать лишнее.</div>
           </div>
-          <div class="program-badge badge-talk">Доклад</div>
+          <div class="program-badge badge-talk">Выступление</div>
         </div>
       </div>
+
       <div class="program-item">
         <div class="program-time"><div class="program-time-val">14:00</div></div>
         <div class="program-content">
           <div>
             <div class="program-title">«Как заработать в крипте не торгуя»</div>
             <div class="program-speaker-name">Денис Грицкевич</div>
+            <div class="program-desc">Конкретные стратегии без графиков и стресса: дропхант, ICO и другие рабочие схемы.</div>
           </div>
-          <div class="program-badge badge-talk">Доклад</div>
+          <div class="program-badge badge-talk">Выступление</div>
         </div>
       </div>
+
       <div class="program-item">
         <div class="program-time"><div class="program-time-val">14:45</div></div>
         <div class="program-content">
           <div>
-            <div class="program-title">«Легальная работа и налогообложение в крипте»</div>
-            <div class="program-speaker-name">Светлана Малинина</div>
+            <div class="program-title">«Крипта 2026: где деньги и как их взять»</div>
+            <div class="program-speaker-name">Роман Мартыненко</div>
+            <div class="program-desc">Рыночная картина, рабочие инструменты, почему большинство теряет деньги и как этого избежать.</div>
           </div>
-          <div class="program-badge badge-talk">Доклад</div>
+          <div class="program-badge badge-talk">Выступление</div>
         </div>
       </div>
+
       <div class="program-item">
         <div class="program-time"><div class="program-time-val">15:30</div></div>
         <div class="program-content">
@@ -1424,9 +1414,12 @@
           <div class="program-badge badge-network">Нетворкинг</div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
+
+
 
 <div class="divider"></div>
 
@@ -1444,7 +1437,7 @@
         <p>WEEX — это не просто биржа. Единственная площадка с торговыми ботами и открытой статистикой доходности за несколько лет работы.</p>
         <p>Хочешь знать реальную эффективность — смотришь цифры, не маркетинг.</p>
         <div class="partner-highlight">
-          🎁 Специально для участников CryptoFam Live WEEX подготовил бонус — детали получишь за день до события в Telegram. А ещё разыграем фирменный мерч прямо на встрече.
+          🎁 Специально для участников CryptoFam Live WEEX подготовил бонусы с раздачей USDT и фирменного мерча.
         </div>
       </div>
     </div>
@@ -1461,27 +1454,21 @@
     <div class="gallery-grid fade-up">
       <div class="gallery-item">
         <img src="спикер_с_залом.jpg" alt="Спикер с залом" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div class="gallery-label">Спикер и зал</div>
       </div>
       <div class="gallery-item">
         <img src="зал.jpg" alt="Зал" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div class="gallery-label">Зал</div>
       </div>
       <div class="gallery-item">
         <img src="спикер_2.png" alt="Спикер" style="width:100%;height:100%;object-fit:cover;display:block;object-position:top;">
-        <div class="gallery-label">Спикер</div>
       </div>
       <div class="gallery-item">
         <img src="нетворкинг.jpg" alt="Нетворкинг" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div class="gallery-label">Нетворкинг</div>
       </div>
       <div class="gallery-item">
         <img src="нетворкинг2.jpg" alt="Нетворкинг" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div class="gallery-label">Живое общение</div>
       </div>
       <div class="gallery-item">
         <img src="просто_фото.jpg" alt="Участники" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div class="gallery-label">Участники</div>
       </div>
     </div>
   </div>
@@ -1503,7 +1490,7 @@
     <div class="reg-intro fade-up">
       <div class="section-label" style="justify-content:center">Участие</div>
       <h3>Почему заявка,<br>а не просто билет?</h3>
-      <p>Мы сознательно ограничиваем количество мест. Не ради искусственного ажиотажа — а чтобы каждый участник получил от встречи максимум: и от докладов, и от живого общения.</p>
+      <p>Мы сознательно ограничиваем количество мест. Не ради искусственного ажиотажа — а чтобы каждый участник получил от встречи максимум: и от выступлений, и от живого общения.</p>
     </div>
 
     <div class="tickets-grid fade-up">
@@ -1511,15 +1498,17 @@
       <!-- Платный билет -->
       <div class="ticket-card featured">
         <div class="ticket-type">Стандартное участие</div>
-        <div class="ticket-price gold">30</div>
-        <div class="ticket-currency">BYN · белорусских рублей</div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:24px;">
+          <span class="ticket-price gold" style="margin-bottom:0;">30</span>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold);letter-spacing:0.05em;">BYN</span>
+        </div>
         <div class="ticket-divider"></div>
         <ul class="ticket-includes">
-          <li>Три живых доклада от практиков</li>
+          <li>Три живых выступления от практиков</li>
           <li>Фуршет и нетворкинг после выступлений</li>
           <li>Эксклюзивный бонус от WEEX</li>
           <li>Участие в розыгрыше мерча</li>
-          <li>Адрес площадки за несколько дней до события</li>
+          <li>Horizont Balance Zal · ул. Куйбышева, 22, корпус 6, вход 2</li>
         </ul>
         <button class="ticket-btn gold-btn" onclick="openModal('paid')">Оставить заявку →</button>
       </div>
@@ -1527,12 +1516,21 @@
       <!-- Бесплатный билет -->
       <div class="ticket-card free-card">
         <div class="ticket-type">Вход за репост</div>
-        <div class="ticket-price green">FREE</div>
-        <div class="ticket-currency">Бесплатно · за репост анонса</div>
+        <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:4px;">
+          <div style="display:flex;align-items:baseline;gap:6px;opacity:0.5;text-decoration:line-through;">
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#888;line-height:1;">30</span>
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#888;letter-spacing:0.05em;">BYN</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:6px;">
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#60d860;line-height:1;">0</span>
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#60d860;letter-spacing:0.05em;">BYN</span>
+          </div>
+        </div>
+        <div class="ticket-currency" style="color:#60d860;margin-bottom:24px;">за репост анонса</div>
         <div class="ticket-divider"></div>
         <ul class="ticket-includes">
           <li>Сделай репост анонса в Telegram или Instagram</li>
-          <li>Все три доклада — как у платного билета</li>
+          <li>Все три выступления — как у платного билета</li>
           <li>Фуршет и нетворкинг</li>
           <li>Бонус от WEEX и розыгрыш мерча</li>
           <li>Мы проверим репост и подтвердим место</li>
@@ -1544,7 +1542,7 @@
 
     <p class="reg-note fade-up">
       Оставляй заявку — мы напишем и подтвердим твоё место.<br>
-      Адрес площадки отправим всем участникам за несколько дней до события.
+      Место проведения: <strong style="color:var(--text)">Horizont Balance Zal</strong> · ул. Куйбышева, 22, корпус 6, вход 2
     </p>
   </div>
 </section>
@@ -1569,7 +1567,7 @@
     </div>
     <p style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">* Заполни хотя бы одно из двух полей</p>
     <button class="form-btn" id="modal-submit-btn" onclick="handleModalSubmit()">Подтвердить заявку →</button>
-    <p class="form-note" id="modal-note">Мы напишем тебе и подтвердим место.<br>Адрес площадки — за несколько дней до события.</p>
+    <p class="form-note" id="modal-note">Мы напишем тебе и подтвердим место.<br>Horizont Balance Zal · ул. Куйбышева, 22, корпус 6, вход 2</p>
   </div>
 </div>
 
@@ -1593,7 +1591,7 @@
           Что входит в участие?
           <span class="faq-arrow">+</span>
         </div>
-        <div class="faq-a"><p>Три живых доклада, фуршет, нетворкинг и бонус от WEEX. Всё это за одну встречу.</p></div>
+        <div class="faq-a"><p>Три живых выступления, фуршет, нетворкинг и бонус от WEEX. Всё это за одну встречу.</p></div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
@@ -1611,17 +1609,10 @@
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          Как узнать про бонус от WEEX?
+          Где пройдёт встреча?
           <span class="faq-arrow">+</span>
         </div>
-        <div class="faq-a"><p>Отправим детали всем подтверждённым участникам за день до события через Telegram.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          Когда узнаю адрес площадки?
-          <span class="faq-arrow">+</span>
-        </div>
-        <div class="faq-a"><p>Адрес отправим всем подтверждённым участникам за несколько дней до события. Оставляй заявку — будешь в курсе.</p></div>
+        <div class="faq-a"><p>Horizont Balance Zal — ул. Куйбышева, 22, корпус 6, вход 2. Ждём тебя 19 апреля в 12:40.</p></div>
       </div>
     </div>
   </div>
@@ -1693,7 +1684,7 @@
       tag.textContent = 'Стандартное участие · 30 BYN';
       tag.className = 'modal-tag gold';
       btn.className = 'form-btn';
-      note.innerHTML = 'Мы напишем тебе и подтвердим место.<br>Адрес площадки — за несколько дней до события.';
+      note.innerHTML = 'Мы напишем тебе и подтвердим место.<br>Horizont Balance Zal · ул. Куйбышева, 22, корпус 6, вход 2';
     }
     document.getElementById('modal-name').value = '';
     document.getElementById('modal-telegram').value = '';
