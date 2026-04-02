@@ -138,8 +138,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     min-height: calc(100vh - 64px);
+  }
+  .hero-bottom-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .hero-badge {
     display: inline-flex;
@@ -174,9 +179,8 @@
     line-height: 1.1;
     letter-spacing: 0.02em;
     color: var(--white);
-    margin-bottom: 12px;
+    margin-bottom: 0;
     max-width: 680px;
-    margin-top: -80px;
   }
   .hero-title .gold { color: var(--gold); }
 
@@ -1281,27 +1285,29 @@
     <h1 class="hero-title">
       За 1 встречу — разберёшься как работать с <span class="gold">криптой</span> легально, системно и без слива
     </h1>
-    <div class="hero-badge">19 апреля 2025 · Минск · Horizont Balance Zal</div>
-    <div class="hero-stats-row">
-      <div class="hero-stat-inline">
-        <span class="hero-stat-inline-num">3</span>
-        <span class="hero-stat-inline-label">Спикера</span>
+    <div class="hero-bottom-group">
+      <div class="hero-badge">19 апреля 2025 · Минск · Horizont Balance Zal</div>
+      <div class="hero-stats-row">
+        <div class="hero-stat-inline">
+          <span class="hero-stat-inline-num">3</span>
+          <span class="hero-stat-inline-label">Спикера</span>
+        </div>
+        <div class="hero-stat-sep"></div>
+        <div class="hero-stat-inline">
+          <span class="hero-stat-inline-num">1</span>
+          <span class="hero-stat-inline-label">Встреча</span>
+        </div>
+        <div class="hero-stat-sep"></div>
+        <div class="hero-stat-inline">
+          <span class="hero-stat-inline-num" style="font-family:'Montserrat',sans-serif;font-weight:800;">∞</span>
+          <span class="hero-stat-inline-label">Контактов</span>
+        </div>
       </div>
-      <div class="hero-stat-sep"></div>
-      <div class="hero-stat-inline">
-        <span class="hero-stat-inline-num">1</span>
-        <span class="hero-stat-inline-label">Встреча</span>
+      <div class="hero-btns">
+        <a href="#registration" class="btn-primary" onclick="event.preventDefault();openModal('paid')">Оставить заявку на участие</a>
       </div>
-      <div class="hero-stat-sep"></div>
-      <div class="hero-stat-inline">
-        <span class="hero-stat-inline-num" style="font-family:'Montserrat',sans-serif;font-weight:800;">∞</span>
-        <span class="hero-stat-inline-label">Контактов</span>
-      </div>
+      <p class="btn-note">Места ограничены — идёт отбор. Вход бесплатно за репост анонса.</p>
     </div>
-    <div class="hero-btns">
-      <a href="#registration" class="btn-primary" onclick="event.preventDefault();openModal('paid')">Оставить заявку на участие</a>
-    </div>
-    <p class="btn-note">Места ограничены — идёт отбор. Вход бесплатно за репост анонса.</p>
   </div>
 
 
