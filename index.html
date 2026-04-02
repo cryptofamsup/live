@@ -99,6 +99,20 @@
     transition: background 0.2s, transform 0.15s;
   }
   .nav-cta:hover { background: #ff8c42; transform: translateY(-1px); }
+  .nav-cta-mobile {
+    display: none;
+    background: var(--gold);
+    color: var(--dark);
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  @media (max-width: 900px) {
+    .nav-cta-mobile { display: block; }
+  }
 
   /* HERO */
   #hero {
@@ -1277,6 +1291,7 @@
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <a href="#registration" class="nav-cta" onclick="event.preventDefault();openModal('paid')">Оставить заявку</a>
+    <a href="#registration" class="nav-cta-mobile" onclick="event.preventDefault();openModal('paid')">Заявка</a>
   </div>
 </nav>
 
