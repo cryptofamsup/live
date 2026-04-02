@@ -9,15 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --gold: #F0C040;
-    --gold-dim: #c9a020;
-    --dark: #0A0A0F;
-    --dark2: #111118;
-    --dark3: #18181f;
-    --dark4: #1e1e28;
-    --border: rgba(240,192,64,0.18);
-    --text: #e8e8f0;
-    --text-muted: #7a7a9a;
+    --gold: #FF6B1A;
+    --gold-dim: #cc4f00;
+    --dark: #0D0D0D;
+    --dark2: #141414;
+    --dark3: #1a1a1a;
+    --dark4: #202020;
+    --border: rgba(255,107,26,0.18);
+    --text: #e8e8e8;
+    --text-muted: #6a6a6a;
     --white: #ffffff;
   }
 
@@ -51,7 +51,7 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 900;
-    background: rgba(10,10,15,0.92);
+    background: rgba(13,13,13,0.95);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
   }
@@ -98,7 +98,7 @@
     text-decoration: none;
     transition: background 0.2s, transform 0.15s;
   }
-  .nav-cta:hover { background: #ffd060; transform: translateY(-1px); }
+  .nav-cta:hover { background: #ff8c42; transform: translateY(-1px); }
 
   /* HERO */
   #hero {
@@ -109,40 +109,43 @@
     overflow: hidden;
     padding-top: 64px;
     max-width: 100vw;
+    background-image: url('hero-bg.jpg');
+    background-size: cover;
+    background-position: center 30%;
   }
   .hero-bg {
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(240,192,64,0.07) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 50% at 10% 80%, rgba(240,192,64,0.04) 0%, transparent 60%),
-      linear-gradient(180deg, #0a0a0f 0%, #0f0f18 100%);
+    background: rgba(13,13,13,0.80);
+    z-index: 1;
   }
   .hero-grid-lines {
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(240,192,64,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(240,192,64,0.04) 1px, transparent 1px);
+      linear-gradient(rgba(255,107,26,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,107,26,0.04) 1px, transparent 1px);
     background-size: 80px 80px;
-    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+    z-index: 1;
   }
   .hero-inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 80px 32px;
+    padding: 0 32px;
     position: relative;
     z-index: 2;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 64px);
   }
   .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(240,192,64,0.1);
+    background: rgba(255,107,26,0.1);
     border: 1px solid var(--border);
     padding: 6px 16px;
     font-size: 11px;
@@ -167,14 +170,93 @@
   }
   .hero-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(32px, 3.2vw, 52px);
-    line-height: 1.05;
+    font-size: clamp(24px, 2.2vw, 38px);
+    line-height: 1.1;
     letter-spacing: 0.02em;
     color: var(--white);
     margin-bottom: 12px;
-    max-width: 700px;
+    max-width: 680px;
   }
   .hero-title .gold { color: var(--gold); }
+
+  .hero-avatars {
+    display: flex;
+    gap: 40px;
+    margin-top: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-avatar img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    border: 2px solid rgba(255,107,26,0.5);
+    background: transparent;
+  }
+  .hero-avatar span {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+
+  /* Hero speaker cards */
+  .hero-speakers {
+    display: flex;
+    gap: 12px;
+    margin: 32px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-speaker-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,107,26,0.25);
+    padding: 16px 20px;
+    width: 160px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .hero-speaker-card:hover {
+    border-color: rgba(255,107,26,0.6);
+    transform: translateY(-3px);
+  }
+  .hero-speaker-photo {
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    border: 2px solid rgba(255,107,26,0.3);
+  }
+  .hero-speaker-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .hero-speaker-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    line-height: 1.2;
+    text-align: center;
+  }
   .hero-subtitle-line {
     font-size: 18px;
     font-weight: 400;
@@ -247,9 +329,9 @@
     clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   }
   .btn-primary:hover {
-    background: #ffd060;
+    background: #ff8c42;
     transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(240,192,64,0.3);
+    box-shadow: 0 8px 32px rgba(255,107,26,0.3);
   }
   .btn-note {
     font-size: 12px;
@@ -375,7 +457,7 @@
     color: var(--white);
     padding: 28px 40px;
     border: 1px solid var(--border);
-    background: rgba(240,192,64,0.05);
+    background: rgba(255,107,26,0.05);
     position: relative;
   }
   .pain-close .gold { color: var(--gold); }
@@ -398,14 +480,14 @@
     transition: border-color 0.3s, transform 0.3s;
   }
   .forwhom-card:hover {
-    border-color: rgba(240,192,64,0.5);
+    border-color: rgba(255,107,26,0.5);
     transform: translateY(-4px);
   }
   .forwhom-num {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 72px;
     line-height: 1;
-    color: rgba(240,192,64,0.1);
+    color: rgba(255,107,26,0.1);
     position: absolute;
     top: 16px; right: 24px;
   }
@@ -442,7 +524,7 @@
     font-size: 28px;
     flex-shrink: 0;
     width: 52px; height: 52px;
-    background: rgba(240,192,64,0.08);
+    background: rgba(255,107,26,0.08);
     border: 1px solid var(--border);
     display: flex; align-items: center; justify-content: center;
   }
@@ -471,7 +553,7 @@
     position: relative;
   }
   .speaker-card:hover {
-    border-color: rgba(240,192,64,0.4);
+    border-color: rgba(255,107,26,0.4);
     transform: translateY(-4px);
   }
   .speaker-photo {
@@ -517,7 +599,7 @@
     margin-bottom: 20px;
   }
   .speaker-topic {
-    background: rgba(240,192,64,0.07);
+    background: rgba(255,107,26,0.07);
     border: 1px solid var(--border);
     padding: 14px 16px;
   }
@@ -548,7 +630,7 @@
     transition: background 0.2s;
   }
   .program-item:last-child { border-bottom: none; }
-  .program-item:hover { background: rgba(240,192,64,0.03); }
+  .program-item:hover { background: rgba(255,107,26,0.03); }
   .program-time {
     width: 120px;
     flex-shrink: 0;
@@ -603,7 +685,7 @@
   }
   .badge-talk { border-color: var(--gold); color: var(--gold); }
   .badge-network { border-color: #4a9aff; color: #4a9aff; }
-  .badge-open { border-color: #60d860; color: #60d860; }
+  .badge-open { border-color: #39d98a; color: #39d98a; }
 
   /* PARTNER */
   #partner { background: var(--dark); }
@@ -615,7 +697,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 56px;
     align-items: center;
-    background: linear-gradient(135deg, rgba(240,192,64,0.04) 0%, transparent 60%);
+    background: linear-gradient(135deg, rgba(255,107,26,0.04) 0%, transparent 60%);
     position: relative;
     overflow: hidden;
   }
@@ -623,7 +705,7 @@
     content: 'WEEX';
     font-family: 'Bebas Neue', sans-serif;
     font-size: 200px;
-    color: rgba(240,192,64,0.03);
+    color: rgba(255,107,26,0.03);
     position: absolute;
     right: -20px;
     bottom: -20px;
@@ -654,7 +736,7 @@
   }
   .partner-text p { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 12px; }
   .partner-highlight {
-    background: rgba(240,192,64,0.08);
+    background: rgba(255,107,26,0.08);
     border-left: 3px solid var(--gold);
     padding: 14px 18px;
     font-size: 14px;
@@ -698,7 +780,7 @@
     position: absolute;
     bottom: 0; left: 0; right: 0;
     padding: 12px 16px;
-    background: linear-gradient(0deg, rgba(10,10,15,0.9) 0%, transparent 100%);
+    background: linear-gradient(0deg, rgba(13,13,13,0.9) 0%, transparent 100%);
     font-size: 11px;
     color: var(--text-muted);
     font-weight: 600;
@@ -723,7 +805,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(240,192,64,0.06) 0%, transparent 70%);
+    background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(255,107,26,0.06) 0%, transparent 70%);
   }
   .counter-block {
     text-align: center;
@@ -794,8 +876,8 @@
   }
   .ticket-card:hover { transform: translateY(-4px); }
   .ticket-card.featured {
-    border-color: rgba(240,192,64,0.5);
-    background: linear-gradient(135deg, rgba(240,192,64,0.07) 0%, var(--dark3) 60%);
+    border-color: rgba(255,107,26,0.5);
+    background: linear-gradient(135deg, rgba(255,107,26,0.07) 0%, var(--dark3) 60%);
   }
   .ticket-type {
     font-size: 10px;
@@ -813,7 +895,7 @@
     margin-bottom: 4px;
   }
   .ticket-price.gold { color: var(--gold); }
-  .ticket-price.green { color: #60d860; }
+  .ticket-price.green { color: #39d98a; }
   .ticket-currency {
     font-size: 13px;
     font-weight: 600;
@@ -850,7 +932,7 @@
     flex-shrink: 0;
     margin-top: 1px;
   }
-  .ticket-card.free-card .ticket-includes li::before { color: #60d860; }
+  .ticket-card.free-card .ticket-includes li::before { color: #39d98a; }
   .ticket-btn {
     width: 100%;
     padding: 15px;
@@ -868,11 +950,11 @@
     background: var(--gold);
     color: var(--dark);
   }
-  .ticket-btn.gold-btn:hover { background: #ffd060; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(240,192,64,0.3); }
+  .ticket-btn.gold-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(255,107,26,0.3); }
   .ticket-btn.green-btn {
     background: transparent;
-    color: #60d860;
-    border: 1px solid #60d860;
+    color: #39d98a;
+    border: 1px solid #39d98a;
     clip-path: none;
   }
   .ticket-btn.green-btn:hover { background: rgba(96,216,96,0.08); transform: translateY(-2px); }
@@ -932,7 +1014,7 @@
     margin-bottom: 8px;
   }
   .modal-tag.gold { color: var(--gold); }
-  .modal-tag.green { color: #60d860; }
+  .modal-tag.green { color: #39d98a; }
   .modal-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 30px;
@@ -980,8 +1062,8 @@
     cursor: pointer;
     transition: background 0.2s, transform 0.15s;
   }
-  .form-btn:hover { background: #ffd060; transform: translateY(-1px); }
-  .form-btn.green-submit { background: #60d860; }
+  .form-btn:hover { background: #ff8c42; transform: translateY(-1px); }
+  .form-btn.green-submit { background: #39d98a; }
   .form-btn.green-submit:hover { background: #7aee7a; }
   .form-note {
     font-size: 11px;
@@ -1017,7 +1099,7 @@
     transition: background 0.2s;
     user-select: none;
   }
-  .faq-q:hover { background: rgba(240,192,64,0.04); }
+  .faq-q:hover { background: rgba(255,107,26,0.04); }
   .faq-arrow {
     font-size: 18px;
     color: var(--gold);
@@ -1049,7 +1131,7 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(240,192,64,0.08) 0%, transparent 60%);
+      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(255,107,26,0.08) 0%, transparent 60%);
   }
   .finalcta-inner { position: relative; z-index: 2; }
   .finalcta-title {
@@ -1116,7 +1198,7 @@
     .hero-inner { padding: 60px 16px; }
 
     /* Hero */
-    .hero-title { font-size: 32px; }
+    .hero-title { font-size: 22px; }
     .hero-subtitle-line { font-size: 15px; }
     .hero-stats-row { width: 100%; }
     .hero-stat-inline { padding: 16px 24px; }
@@ -1174,13 +1256,9 @@
   <div class="hero-grid-lines"></div>
   <div class="hero-inner">
     <h1 class="hero-title">
-      За 1 встречу разберёшься<br>как работать с <span class="gold">криптой</span> —<br>легально, системно<br>и без слива
+      За 1 встречу — разберёшься как работать с <span class="gold">криптой</span> легально, системно и без слива
     </h1>
     <div class="hero-badge">19 апреля 2025 · Минск · Horizont Balance Zal</div>
-    <p class="hero-subtitle-line">
-      <strong>3 практикующих спикера.</strong> Живые выступления.<br>
-      Фуршет и нетворкинг. Без воды — только практика.
-    </p>
     <div class="hero-stats-row">
       <div class="hero-stat-inline">
         <span class="hero-stat-inline-num">3</span>
@@ -1201,6 +1279,20 @@
       <a href="#registration" class="btn-primary" onclick="event.preventDefault();openModal('paid')">Оставить заявку на участие</a>
     </div>
     <p class="btn-note">Места ограничены — идёт отбор. Вход бесплатно за репост анонса.</p>
+    <div class="hero-avatars">
+      <div class="hero-avatar">
+        <img src="Роман_Мартыненко.png" alt="Роман Мартыненко">
+        <span>Роман Мартыненко</span>
+      </div>
+      <div class="hero-avatar">
+        <img src="Денис_Грицкевич.png" alt="Денис Грицкевич">
+        <span>Денис Грицкевич</span>
+      </div>
+      <div class="hero-avatar">
+        <img src="Света_Малинина.png" alt="Света Малинина">
+        <span>Света Малинина</span>
+      </div>
+    </div>
   </div>
 
 
@@ -1288,8 +1380,8 @@
           <p>Люди, которые реально в теме. Фуршет и нетворкинг — именно здесь находят партнёров и инсайды.</p>
         </div>
       </div>
-      <div class="benefit-item" style="background: rgba(240,192,64,0.04); border-left: 2px solid var(--gold);">
-        <div class="benefit-icon" style="background: rgba(240,192,64,0.15);">🎁</div>
+      <div class="benefit-item" style="background: rgba(255,107,26,0.04); border-left: 2px solid var(--gold);">
+        <div class="benefit-icon" style="background: rgba(255,107,26,0.15);">🎁</div>
         <div class="benefit-text">
           <h4>Розыгрыш мерча прямо на встрече</h4>
           <p>Фирменный мерч от WEEX разыграем на мероприятии. Приходи — у тебя будет шанс выиграть.</p>
@@ -1306,6 +1398,7 @@
   <div class="section-inner">
     <div class="section-label fade-up">Спикеры</div>
     <h2 class="section-title fade-up">Кто будет <span class="gold">говорить</span></h2>
+    <p class="fade-up" style="font-size:16px;color:var(--text-muted);margin-top:-8px;margin-bottom:48px;">3 практикующих спикера. Живые выступления. Без воды — только практика.</p>
     <div class="speakers-grid">
 
       <div class="speaker-card fade-up">
@@ -1522,11 +1615,11 @@
             <span style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#888;letter-spacing:0.05em;">BYN</span>
           </div>
           <div style="display:flex;align-items:baseline;gap:6px;">
-            <span style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#60d860;line-height:1;">0</span>
-            <span style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#60d860;letter-spacing:0.05em;">BYN</span>
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#39d98a;line-height:1;">0</span>
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#39d98a;letter-spacing:0.05em;">BYN</span>
           </div>
         </div>
-        <div class="ticket-currency" style="color:#60d860;margin-bottom:24px;">за репост анонса</div>
+        <div class="ticket-currency" style="color:#39d98a;margin-bottom:24px;">за репост анонса</div>
         <div class="ticket-divider"></div>
         <ul class="ticket-includes">
           <li>Сделай репост анонса в Telegram или Instagram</li>
@@ -1749,7 +1842,7 @@
     .then(res => res.json())
     .then(data => {
       if (data.ok) {
-        btn.style.background = '#60d860';
+        btn.style.background = '#39d98a';
         btn.textContent = '✓ Заявка принята!';
         btn.disabled = false;
         setTimeout(() => closeModal(), 1800);
