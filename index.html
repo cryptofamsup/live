@@ -476,38 +476,50 @@
   }
   .forwhom-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 56px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 48px;
   }
   .forwhom-card {
-    border: 1px solid var(--border);
-    padding: 36px 28px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 28px 24px;
     position: relative;
-    background: linear-gradient(135deg, var(--dark3) 0%, var(--dark) 100%);
+    background: var(--dark3);
     transition: border-color 0.3s, transform 0.3s;
+    overflow: hidden;
   }
   .forwhom-card:hover {
-    border-color: rgba(255,107,26,0.5);
+    border-color: rgba(255,107,26,0.4);
     transform: translateY(-4px);
   }
   .forwhom-num {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 72px;
+    font-size: 100px;
     line-height: 1;
-    color: rgba(255,107,26,0.1);
+    color: rgba(255,107,26,0.6);
     position: absolute;
-    top: 16px; right: 24px;
+    top: -8px; right: 16px;
+    letter-spacing: -0.02em;
   }
-  .forwhom-icon { font-size: 32px; margin-bottom: 20px; display: block; }
+  .forwhom-icon { display: none; }
   .forwhom-card h3 {
     font-weight: 800;
-    font-size: 16px;
+    font-size: 18px;
     color: var(--white);
-    margin-bottom: 12px;
-    letter-spacing: 0.03em;
+    margin-bottom: 10px;
+    letter-spacing: 0.01em;
+    line-height: 1.25;
+    position: relative;
+    z-index: 1;
   }
-  .forwhom-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+  .forwhom-card p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+  }
 
   /* WHAT YOU GET */
   #benefits { background: var(--dark2); }
@@ -1299,28 +1311,24 @@
   <div class="section-inner">
     <div class="section-label fade-up">Для кого</div>
     <h2 class="section-title fade-up">Тебе сюда, если <span class="gold">узнаёшь себя:</span></h2>
-    <div class="forwhom-cards" style="grid-template-columns: repeat(2, 1fr);">
+    <div class="forwhom-cards">
       <div class="forwhom-card fade-up">
-        <span class="forwhom-num">01</span>
-        <span class="forwhom-icon">👋</span>
+        <span class="forwhom-num">1</span>
         <h3>Хочешь войти в крипту, но не знаешь с чего начать</h3>
         <p>Куча информации, непонятно кому доверять и что реально работает.</p>
       </div>
       <div class="forwhom-card fade-up">
-        <span class="forwhom-num">02</span>
-        <span class="forwhom-icon">📈</span>
+        <span class="forwhom-num">2</span>
         <h3>Всё знаешь, но результата нет</h3>
         <p>Сделки есть, прибыли нет — и уже непонятно что идёт не так.</p>
       </div>
       <div class="forwhom-card fade-up">
-        <span class="forwhom-num">03</span>
-        <span class="forwhom-icon">💡</span>
+        <span class="forwhom-num">3</span>
         <h3>Ищешь новые направления для заработка в крипте</h3>
         <p>Узнаешь самые актуальные направления на 2026 год.</p>
       </div>
       <div class="forwhom-card fade-up">
-        <span class="forwhom-num">04</span>
-        <span class="forwhom-icon">💼</span>
+        <span class="forwhom-num">4</span>
         <h3>Работаешь с криптой, но боишься налогов</h3>
         <p>Деньги есть, а как работать легально в Беларуси — непонятно.</p>
       </div>
