@@ -553,7 +553,9 @@
     width: 80px; height: 80px;
     background: rgba(255,107,26,0.08);
     border: 1px solid var(--border);
+    border-radius: 16px;
     display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
   }
   .benefit-text h4 {
     font-weight: 700;
@@ -1853,7 +1855,7 @@
       `✈️ Telegram: ${telegram || '—'}\n` +
       `📞 Телефон: ${phone || '—'}\n` +
       `🎟 Билет: ${ticketType}`;
-
+https://github.com/cryptofamsup/live/blob/main/index.html#L13C24
     fetch(`https://api.telegram.org/bot8565048340:AAFPG8Qhx4N4PhrGdd-Zgh8T8_axDhbnYm0/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
