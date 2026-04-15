@@ -1623,8 +1623,8 @@
 <section id="registration">
   <div class="section-inner">
     <div class="counter-block fade-up">
-      <div class="counter-num" id="seats-num">12</div>
-      <div class="counter-label">мест осталось из 50</div>
+      <div class="counter-num" id="seats-num">4</div>
+      <div class="counter-label">мест осталось из 100</div>
       <div class="counter-bar-outer">
         <div class="counter-bar-inner" id="counter-bar"></div>
       </div>
@@ -1805,8 +1805,8 @@
   fadeEls.forEach(el => observer.observe(el));
 
   // Counter bar
-  const totalSeats = 50;
-  const remainingSeats = 12;
+  const totalSeats = 100;
+  const remainingSeats = 4;
   const takenPct = ((totalSeats - remainingSeats) / totalSeats * 100);
   document.getElementById('counter-bar').style.width = takenPct + '%';
 
